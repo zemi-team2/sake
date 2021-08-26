@@ -1,4 +1,4 @@
-FROM python:3
+FROM tensorflow/tensorflow:latest-gpu
 
 RUN apt-get update
 RUN apt-get -y install locales && \
