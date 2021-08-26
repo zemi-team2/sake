@@ -1,3 +1,5 @@
+# Docker の動作確認用プログラムです
+
 import requests
 from bs4 import BeautifulSoup
 

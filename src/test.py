@@ -1,3 +1,5 @@
+# Docker の動作確認用プログラムです
+
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, InputLayer
