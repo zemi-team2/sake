@@ -3,3 +3,5 @@ beautifulsoup4
 keras
 mnist
 tensorflow
+flake8
+black
