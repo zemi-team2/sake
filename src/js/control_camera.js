@@ -1,3 +1,12 @@
+/**
+ * クライアントのカメラで撮影する関数
+ * shutter_buttonを押すと撮影し、up_load_buttonで決定
+ * @param  {String} video_id            カメラが映し出す映像を表示する<video>タグのid
+ * @param  {String} canvas_id           撮影した結果を表示する<canvas>タグのid
+ * @param  {String} shutter_button_id   撮影を開始するボタンのid
+ * @param  {String} up_load_button      撮影した画像を決定するボタンのid
+ * @return {String}                     base64形式の画像（これは、2021年8月28日時点では変更の可能性あり）
+ */
 function control_camera(video_id, canvas_id, shutter_button_id, up_load_button) {
 
     window.onload = () => {
@@ -29,7 +38,7 @@ function control_camera(video_id, canvas_id, shutter_button_id, up_load_button) 
             });
 
         /**
-         * シャッターボタン
+         *  撮影ボタン
          */
         document.querySelector("#" + shutter_button_id).addEventListener("click", () => {
 
@@ -44,6 +53,9 @@ function control_camera(video_id, canvas_id, shutter_button_id, up_load_button) 
 
         });
 
+        /**
+         *  決定ボタン
+         */
         document.querySelector("#" + up_load_button).addEventListener("click", () => {
 
             var image_base64 = canvas.toDataURL('image/png');
