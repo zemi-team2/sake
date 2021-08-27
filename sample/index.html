@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Camera Test</title>
+</head>
+
+<body>
+
+    <h1>HTML5カメラ</h1>
+
+    <video id="camera" width="300" height="200"></video>
+    <canvas id="canvas" width="300" height="200"></canvas>
+
+    <form>
+        <button type="button" id="shutter">シャッター</button>
+        <button type="button" id="upload">OK</button>
+    </form>
+
+    <script type="text/javascript" src="../src/js/control_camera.js"></script>
+    <script>
+        var image = control_camera("camera", "canvas", "shutter", "upload");
+        console.log("success !!")
+
+    </script>
+
+</body>
+
+</html>
