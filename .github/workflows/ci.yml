@@ -3,7 +3,7 @@ name: Lint by flake8
 on:
   pull_request:
     paths:
-      - 'src/*.py'
+      - 'backend/src/*.py'
 
 jobs:
   flake8_py3:
