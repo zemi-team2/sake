@@ -1,0 +1,9 @@
+version: '3'
+services:
+  frontend:
+    build: ./
+    container_name: 'sake_frontend'
+    working_dir: '/app'
+    tty: true
+    volumes:
+      - ./:/app
