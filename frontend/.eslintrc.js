@@ -11,5 +11,8 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': 'error',
+    'no-alert': 'off',
+    'no-console': 'off',
+    'no-unused-vars': 'off',
   },
 };
