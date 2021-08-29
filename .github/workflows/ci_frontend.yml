@@ -19,6 +19,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
           restore-keys: ${{ runner.os }}-yarn-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --prefer-offline
+        run: |
+          cd frontend
+          yarn install --frozen-lockfile --prefer-offline
       - name: Run ESLint
         run: yarn lint
