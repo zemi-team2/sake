@@ -8,4 +8,4 @@ data = requests.get(load_url)
 html = BeautifulSoup(data.content, "html.parser")
 
 for element in html.find_all("h4"):
-  print(element.text)
+    print(element.text)
