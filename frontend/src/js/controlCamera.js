@@ -71,9 +71,10 @@ function upLoadImageServer(videoId, canvasId, uploadButtonId) {
   let imageBase64;
   document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
     const video = document.querySelector(`#${videoId}`);
-    const canvas = document.querySelector(`${canvasId}`);
+    const canvas = document.querySelector(`#${canvasId}`);
     imageBase64 = canvas.toDataURL("image/png");
     video.style.display = "none"; // <video>タグを非表示
+    console.log(`image: ${imageBase64}`);
   });
 
   // これ以降にアップロードする処理を書いていく
