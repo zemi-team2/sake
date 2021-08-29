@@ -51,9 +51,8 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
         canvas.setAttribute("height", h);
         ctx.drawImage(video, 0, 0, w, h);
       });
-
   };
-};
+}
 
 /**
  * カメラで撮影した画像をサーバーに送信する関数
@@ -73,10 +72,10 @@ function upLoadImageServer(videoId, canvasId, uploadButtonId) {
   document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.querySelector(`${canvasId}`);
-    imageBase64 = canvas.toDataURL("image/png")
+    imageBase64 = canvas.toDataURL("image/png");
     video.style.display = "none"; // <video>タグを非表示
   });
 
   //これ以降にアップロードする処理を書いていく
-  console.log("image uploded.")
-};
+  console.log("image uploded.");
+}
