@@ -59,8 +59,7 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
  * uploadボタンを押すとサーバー画像を送信する
  * @param  {String} videoId           カメラが映し出す映像を表示する<video>タグのid
  * @param  {String} canvasId          撮影した結果を表示する<canvas>タグのid
- * @param  {String} shutterButtonId   撮影を開始するボタンのid
- * @param  {String} uploadButton      撮影した画像を送信するボタンのid
+ * @param  {String} uploadButtonId      撮影した画像を送信するボタンのid
  * @return {any}                      画像の処理結果を出力(予定)
  */
 
