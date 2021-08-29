@@ -77,5 +77,5 @@ function upLoadImageServer(videoId, canvasId, uploadButtonId) {
   });
 
   // これ以降にアップロードする処理を書いていく
-  console.log("image uploded.");
+  console.log("image upload.");
 }
