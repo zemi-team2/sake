@@ -8,3 +8,5 @@ services:
     tty: true
     volumes:
       - ./src:/sake/src
+    ports:
+      - 8000:8000
