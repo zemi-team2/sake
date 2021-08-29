@@ -23,4 +23,6 @@ jobs:
           cd frontend
           yarn install --frozen-lockfile --prefer-offline
       - name: Run ESLint
-        run: yarn lint
+        run: |
+          cd frontend
+          yarn lint
