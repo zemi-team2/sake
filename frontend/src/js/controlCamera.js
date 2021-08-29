@@ -64,7 +64,7 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
  * @return {any}                      画像の処理結果を出力(予定)
  */
 
-function upLoadImageServer(videoId, canvasId, uploadButtonId) {
+function uploadImageServer(videoId, canvasId, uploadButtonId) {
   /**
    *  送信ボタンが押された時<canvas>の画像をbase64に変換
    */
