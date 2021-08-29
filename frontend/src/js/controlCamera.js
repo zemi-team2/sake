@@ -4,10 +4,9 @@
  * @param  {String} videoId           カメラが映し出す映像を表示する<video>タグのid
  * @param  {String} canvasId          撮影した結果を表示する<canvas>タグのid
  * @param  {String} shutterButtonId   撮影を開始するボタンのid
- * @param  {String} uploadButton      撮影した画像を決定するボタンのid
- * @return {String}                   base64形式の画像（これは、2021年8月28日時点では変更の可能性あり）
+ * @return {void}
  */
-function controlCamera(videoId, canvasId, shutterButtonId, uploadButton) {
+function controlCamera(videoId, canvasId, shutterButtonId) {
   window.onload = () => {
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.getElementById(canvasId);
@@ -52,15 +51,31 @@ function controlCamera(videoId, canvasId, shutterButtonId, uploadButton) {
         canvas.setAttribute("height", h);
         ctx.drawImage(video, 0, 0, w, h);
       });
-
-    /**
-     *  決定ボタン(ボタンが押された時<canvas>の画像をbase64に変換して返す)
-     */
-    document.querySelector(`#${uploadButton}`).addEventListener("click", () => {
-      const imageBase64 = canvas.toDataURL("image/png");
-      alert("撮影が完了したよ！！");
-      video.style.display = "none"; // <video>タグを非表示
-      return imageBase64;
-    });
   };
+}
+
+/**
+ * カメラで撮影した画像をサーバーに送信する関数
+ * uploadボタンを押すとサーバー画像を送信する
+ * @param  {String} videoId           カメラが映し出す映像を表示する<video>タグのid
+ * @param  {String} canvasId          撮影した結果を表示する<canvas>タグのid
+ * @param  {String} uploadButtonId      撮影した画像を送信するボタンのid
+ * @return {any}                      画像の処理結果を出力(予定)
+ */
+
+function uploadImageToServer(videoId, canvasId, uploadButtonId) {
+  /**
+   *  送信ボタンが押された時<canvas>の画像をbase64に変換
+   */
+  let imageBase64;
+  document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
+    const video = document.querySelector(`#${videoId}`);
+    const canvas = document.querySelector(`#${canvasId}`);
+    imageBase64 = canvas.toDataURL("image/png");
+    video.style.display = "none"; // <video>タグを非表示
+    console.log(`image: ${imageBase64}`);
+  });
+
+  // これ以降にアップロードする処理を書いていく
+  console.log("image upload.");
 }
