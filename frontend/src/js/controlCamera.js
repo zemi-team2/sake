@@ -68,7 +68,7 @@ function upLoadImageServer(videoId, canvasId, uploadButtonId) {
   /**
    *  送信ボタンが押された時<canvas>の画像をbase64に変換
    */
-  var imageBase64;
+  let imageBase64;
   document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.querySelector(`${canvasId}`);
@@ -76,6 +76,6 @@ function upLoadImageServer(videoId, canvasId, uploadButtonId) {
     video.style.display = "none"; // <video>タグを非表示
   });
 
-  //これ以降にアップロードする処理を書いていく
+  // これ以降にアップロードする処理を書いていく
   console.log("image uploded.");
 }
