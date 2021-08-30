@@ -9,4 +9,4 @@ services:
     volumes:
       - .:/sake/backend/
     ports:
-      - 8000:8000
+      - "8000:8000"
