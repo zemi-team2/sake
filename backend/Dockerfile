@@ -11,9 +11,9 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
 
-RUN mkdir -p /sake/src
-COPY requirements.txt /sake/src
-WORKDIR /sake/src
+RUN mkdir -p /sake/backend
+COPY requirements.txt /sake/backend
+WORKDIR /sake/backend
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools

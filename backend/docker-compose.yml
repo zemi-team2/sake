@@ -4,9 +4,9 @@ services:
     restart: always
     build: ./
     container_name: 'python3'
-    working_dir: '/sake/src'
+    working_dir: '/sake/backend/src'
     tty: true
     volumes:
-      - ./src:/sake/src
+      - .:/sake/backend/
     ports:
       - 8000:8000
