@@ -11,7 +11,7 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.getElementById(canvasId);
 
-    /* カメラの設定 */
+    // カメラの設定
     const constraints = {
       audio: false,
       video: {
@@ -22,9 +22,7 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
       },
     };
 
-    /**
-     *  カメラを<video>と同期
-     */
+    // カメラを<video>と同期
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
@@ -37,9 +35,7 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
         console.error(`${err.name}: ${err.message}`);
       });
 
-    /**
-     *  撮影ボタン(ボタンが押された時の<video>の1フレームを<canvas>に表示)
-     */
+    // 撮影ボタンが押されたときのイベント処理（<video>の1フレームを<canvas>に表示）
     document
       .querySelector(`#${shutterButtonId}`)
       .addEventListener("click", () => {
@@ -64,19 +60,18 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
  */
 
 function uploadImageToServer(videoId, canvasId, uploadButtonId) {
-  /**
-   *  送信ボタンが押された時<canvas>の画像をbase64に変換
-   */
+  // 送信ボタンが押されたときのイベント処理（<canvasの画像を送信できる形式に変換して、画像処理サーバーに送信>）
   document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
+    // 画像をbase64に変換
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.querySelector(`#${canvasId}`);
     const imageBase64 = canvas.toDataURL("image/png");
     video.style.display = "none"; // <video>タグを非表示
-
-    // console.log(`image: ${imageBase64}`);
     const formData = new FormData();
     formData.append("img", imageBase64);
+    // console.log(`image: ${imageBase64}`);
 
+    // 画像をPOST方式で送信 url：http://127.0.0.1:8000/imageProcessing
     $.ajax({
       // 画像処理サーバーに返す場合
       url: "http://127.0.0.1:8000/imageProcessing",
