@@ -59,23 +59,43 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
  * uploadボタンを押すとサーバー画像を送信する
  * @param  {String} videoId           カメラが映し出す映像を表示する<video>タグのid
  * @param  {String} canvasId          撮影した結果を表示する<canvas>タグのid
- * @param  {String} uploadButtonId      撮影した画像を送信するボタンのid
- * @return {any}                      画像の処理結果を出力(予定)
+ * @param  {String} uploadButtonId    撮影した画像を送信するボタンのid
+ * @return {void}
  */
 
 function uploadImageToServer(videoId, canvasId, uploadButtonId) {
   /**
    *  送信ボタンが押された時<canvas>の画像をbase64に変換
    */
-  let imageBase64;
   document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.querySelector(`#${canvasId}`);
-    imageBase64 = canvas.toDataURL("image/png");
+    const imageBase64 = canvas.toDataURL("image/png");
     video.style.display = "none"; // <video>タグを非表示
-    console.log(`image: ${imageBase64}`);
-  });
 
-  // これ以降にアップロードする処理を書いていく
-  console.log("image upload.");
+    // console.log(`image: ${imageBase64}`);
+    const formData = new FormData();
+    formData.append("img", imageBase64);
+
+    $.ajax({
+      // 画像処理サーバーに返す場合
+      url: "http://127.0.0.1:8000/imageProcessing",
+      type: "POST",
+      mode: "no-cors",
+      data: formData,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: (json) => {
+        // 非同期で通信成功時に読み出される [200 OK 時]
+        // out*はサーバー（python）からの戻り値
+        console.log(`Success ${json.out1}`);
+        console.log(`Success ${json.out2}`);
+      },
+      error: (errorThrown) => {
+        //  非同期で通信失敗時に読み出される
+        console.error(`Error : ${errorThrown}`);
+      },
+    });
+  });
 }
