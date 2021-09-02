@@ -1,12 +1,13 @@
-# sake
+# Sake Backend
 
 ## 🏃 セットアップと Python コードの実行
 
 ## make コマンドを使う場合
 
-### 1. リポジトリのクローン
+### 1. リポジトリのクローンとディレクトリの移動
 ```shell
 git clone git@github.com:zemi-team2/sake.git
+cd backend
 ```
 
 #### 2. 開発環境の初期化
@@ -27,9 +28,10 @@ python sample.py
 
 ## make コマンドを使わない場合
 
-### 1. リポジトリのクローン
+### 1. リポジトリのクローンとディレクトリの移動
 ```shell
 git clone git@github.com:zemi-team2/sake.git
+cd backend
 ```
 
 #### 2. 開発環境の初期化
