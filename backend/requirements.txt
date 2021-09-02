@@ -6,3 +6,4 @@ tensorflow
 flake8
 black
 Flask
+Pillow
