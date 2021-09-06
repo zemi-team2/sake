@@ -76,8 +76,8 @@ function uploadImageToServer(videoId, canvasId, uploadButtonId) {
       .post("http://127.0.0.1:8000/imageProcessing", formData)
       .then((res) => {
         // 通信成功時の処理
-        console.log(`Success ${res.out1}`);
-        console.log(`Success ${res.out2}`);
+        console.log(`Success ${res.data.out1}`);
+        console.log(`Success ${res.data.out2}`);
       })
       .catch((err) => {
         // 通信失敗時の処理
