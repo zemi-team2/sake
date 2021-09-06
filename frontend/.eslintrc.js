@@ -15,5 +15,6 @@ module.exports = {
     'no-alert': 'off',
     'no-console': 'off',
     'no-unused-vars': 'off',
+    'no-undef': 'off',
   },
 };
