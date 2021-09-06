@@ -72,25 +72,16 @@ function uploadImageToServer(videoId, canvasId, uploadButtonId) {
     // console.log(`image: ${imageBase64}`);
 
     // 画像をPOST方式で送信 url：http://127.0.0.1:8000/imageProcessing
-    $.ajax({
-      // 画像処理サーバーに返す場合
-      url: "http://127.0.0.1:8000/imageProcessing",
-      type: "POST",
-      mode: "no-cors",
-      data: formData,
-      contentType: false,
-      processData: false,
-      dataType: "json",
-      success: (json) => {
-        // 非同期で通信成功時に読み出される [200 OK 時]
-        // out*はサーバー（python）からの戻り値
-        console.log(`Success ${json.out1}`);
-        console.log(`Success ${json.out2}`);
-      },
-      error: (errorThrown) => {
-        //  非同期で通信失敗時に読み出される
-        console.error(`Error : ${errorThrown}`);
-      },
-    });
+    axios
+      .post("http://127.0.0.1:8000/imageProcessing", formData)
+      .then((res) => {
+        // 通信成功時の処理
+        console.log(`Success ${res.out1}`);
+        console.log(`Success ${res.out2}`);
+      })
+      .catch((err) => {
+        // 通信失敗時の処理
+        console.error(`Error: ${err}`);
+      });
   });
 }
