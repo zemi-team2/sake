@@ -11,6 +11,7 @@ app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 IMAGE = None  # 撮影した画像を格納する変数
 
+
 # トップページ
 @app.route("/")
 def index():
