@@ -8,7 +8,7 @@
  */
 function controlCamera(videoId, canvasId, shutterButtonId) {
   window.onload = () => {
-    const video = document.querySelector(`#${videoId}`);
+    const video = document.getElementById(videoId);
     const canvas = document.getElementById(canvasId);
 
     // カメラの設定
@@ -37,15 +37,15 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
 
     // 撮影ボタンが押されたときのイベント処理（<video>の1フレームを<canvas>に表示）
     document
-      .querySelector(`#${shutterButtonId}`)
+      .getElementById(shutterButtonId)
       .addEventListener("click", () => {
         video.style.display = ""; // <video>タグを表示
-        const ctx = canvas.getContext("2d");
+        const canvasContext = canvas.getContext("2d");
         const w = video.offsetWidth;
         const h = video.offsetHeight;
         canvas.setAttribute("width", w);
         canvas.setAttribute("height", h);
-        ctx.drawImage(video, 0, 0, w, h);
+        canvasContext.drawImage(video, 0, 0, w, h);
       });
   };
 }
@@ -61,7 +61,11 @@ function controlCamera(videoId, canvasId, shutterButtonId) {
 
 function uploadImageToServer(videoId, canvasId, uploadButtonId) {
   // 送信ボタンが押されたときのイベント処理（<canvasの画像を送信できる形式に変換して、画像処理サーバーに送信>）
-  document.querySelector(`#${uploadButtonId}`).addEventListener("click", () => {
+  const uploadButton = document.getElementById(uploadButtonId)
+  const video = document.getElementById(videoId);
+  const canvas = document.getElementById(canvasId);
+
+  uploadButton.addEventListener("click", () => {
     // 画像をbase64に変換
     const video = document.querySelector(`#${videoId}`);
     const canvas = document.querySelector(`#${canvasId}`);
