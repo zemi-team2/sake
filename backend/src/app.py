@@ -18,13 +18,11 @@ def index():
     return render_template("index.html")
 
 
-# プレビュー画面（取得した画像を変数に格納）
 # 撮影した画像を変数に格納してプレビュー画面を表示
 @app.route("/previewImage", methods=["POST"])
 def image_preview():
 
     global IMAGE
-    # 送信された画像をデコードしてnumpyに変換
     enc_img = request.form["image"]
     IMAGE = base64.b64decode(enc_img.split(",")[1])
 
@@ -34,9 +32,12 @@ def image_preview():
 # 撮影した画像を基に画像処理を行って結果画面を表示
 @app.route("/result")
 def result():
+    # 送信された画像をデコードしてnumpyに変換
     img_pil = Image.open(BytesIO(IMAGE))
     image_np = np.array(img_pil)
     print(image_np)
+    # これ以降に画像の処理を書いていく...
+
     return "result"
 
 
