@@ -22,6 +22,7 @@ def index():
 @app.route("/previewImage", methods=["POST"])
 def image_preview():
 
+    # 撮影した画像をデコード
     global IMAGE
     enc_img = request.form["image"]
     IMAGE = base64.b64decode(enc_img.split(",")[1])
@@ -32,7 +33,7 @@ def image_preview():
 # 撮影した画像を基に画像処理を行って結果画面を表示
 @app.route("/result")
 def result():
-    # 送信された画像をデコードしてnumpyに変換
+    # デコードした画像を読み込んでnumpyに変換
     img_pil = Image.open(BytesIO(IMAGE))
     image_np = np.array(img_pil)
     print(image_np)
