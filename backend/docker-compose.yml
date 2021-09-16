@@ -7,6 +7,6 @@ services:
     working_dir: '/sake/backend/src'
     tty: true
     volumes:
-      - .:/sake/backend/
+      - ..:/sake
     ports:
       - "8000:8000"
