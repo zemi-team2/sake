@@ -3,28 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Camera Test</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>トップページ</title>
 </head>
 
 <body>
 
-    <h1>HTML5カメラ</h1>
+    <h1>トップページ</h1>
 
-    <video id="camera" width="300" height="200"></video>
-    <canvas id="canvas" width="300" height="200"></canvas>
+    <video id="camera" width="100%" height="10%"></video>
+    <canvas id="canvas" hidden></canvas>
 
-    <form>
-        <button type="button" id="shutter">シャッター</button>
-        <button type="button" id="upload">OK</button>
+    <form action="/previewImage" method="POST">
+        <button type="submit" id="shutter">シャッター</button>
+        <input type="text" name="image" id="uploadImage" hidden />
     </form>
 
-    <script type="text/javascript" src="../js/controlCamera.js"></script>
-    <!-- <script src="{{url_for('static', filename='controlCamera.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="../js/controlCamera.js"></script> -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/controlCamera.js')}}"></script>
 
     <script>
-        controlCamera("camera", "canvas", "shutter");
-        uploadImageToServer("camera", "canvas", "upload");
+        controlCamera("camera", "canvas", "shutter", "uploadImage");
     </script>
 
 </body>
