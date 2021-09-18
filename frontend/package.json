@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "author": "Zemi Team2",
   "scripts": {
-    "lint": "eslint src/js/*.js",
-    "format": "prettier -w src/js/*.js"
+    "lint": "eslint src/js/*.js && stylelint src/styles/*.css",
+    "lint:js": "eslint src/js/*.js",
+    "lint:style": "stylelint src/styles/*.css",
+    "format": "prettier -w src/js/*.js && stylelint --fix src/styles/*.css",
+    "format:js": "prettier -w src/js/*.js",
+    "format:style": "stylelint --fix src/styles/*.css"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -13,6 +17,8 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jquery": "^1.5.1",
     "eslint-plugin-prettier": "^3.4.1",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
   }
 }
