@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "author": "Zemi Team2",
   "scripts": {
-    "lint": "eslint src/js/*.js",
+    "lint": "eslint src/js/*.js && stylelint src/styles/*.css",
+    "lint:js": "eslint src/js/*.js",
     "lint:style": "stylelint src/styles/*.css",
-    "format": "prettier -w src/js/*.js",
+    "format": "prettier -w src/js/*.js && stylelint --fix src/styles/*.css",
+    "format:js": "prettier -w src/js/*.js",
     "format:style": "stylelint --fix src/styles/*.css"
   },
   "devDependencies": {
