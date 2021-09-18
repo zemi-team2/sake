@@ -3,7 +3,8 @@ name: Lint by ESLint
 on:
   pull_request:
     paths:
-      - 'frontend/src/*.{js,css}'
+      - 'frontend/src/js/*.js'
+      - 'frontend/src/styles/*.css'
 
 jobs:
   lint:
