@@ -8,7 +8,7 @@
  * @return {void}
  */
 
-function controlCamera(videoId, canvasId, shutterButtonId, formImageId) {
+function controlCamera(videoId, canvasId, shutterButtonId, formImageId){
   window.onload = () => {
     const video = document.getElementById(videoId);
     const canvas = document.getElementById(canvasId);
