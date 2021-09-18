@@ -1,9 +1,8 @@
-name: Lint by ESLint
+name: Lint by Stylelint
 
 on:
   pull_request:
     paths:
-      - 'frontend/src/js/*.js'
       - 'frontend/src/styles/*.css'
 
 jobs:
@@ -23,7 +22,7 @@ jobs:
         run: |
           cd frontend
           yarn install --frozen-lockfile --prefer-offline
-      - name: Run ESLint
+      - name: Run Stylelint
         run: |
           cd frontend
-          yarn lint
+          yarn lint:style
