@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'frontend/src/js/*.js'
+      - 'frontend/src/styles/*.css'
 
 jobs:
   lint:
