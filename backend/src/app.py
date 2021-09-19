@@ -39,9 +39,8 @@ def result():
 
     onclick_elem = "location.href='/'"
     img_tag = '<img src="{0}" width="{1}"/>'.format(img_base64, "50%")
-    btn_tag = '<button type="button" onclick="{0}">戻る</button> </div>'.format(
-        onclick_elem
-    )
+    btn_tag = '<button type="button" onclick="{0}">戻る</button>'.format(
+        onclick_elem)
     return img_tag + btn_tag
 
 
