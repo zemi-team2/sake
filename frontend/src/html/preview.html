@@ -9,7 +9,7 @@
 <body>
     <h1>プレビュー画面</h1>
     <form action="/result" method="POST">
-        <img src="{{shotImage}}" height="100%" width="100%" />
+        <img src="{{shotImage}}" height="100%" width="100%" hidden />
         <button type="submit">OK</button>
         <button onclick="location.href='/'">戻る</button>
         <input type="text" name="image" value="{{shotImage}}" />
