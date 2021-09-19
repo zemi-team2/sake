@@ -9,6 +9,7 @@ template_dir = "/sake/frontend/src/html"
 static_dir = "/sake/frontend/src"
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
+
 # トップページ
 @app.route("/")
 def index():
@@ -37,7 +38,11 @@ def result():
     # これ以降に画像の処理を書いていく...
 
     onclick_elem = "location.href='/'"
-    return '<img src="{}" width="{}"/> <div> <button type="button" onclick="{}">戻る</button> </div>'.format( img_base64, "50%", onclick_elem, onclick_elem)
+    img_tag = '<img src="{0}" width="{1}"/>'.format(img_base64, "50%")
+    btn_tag = '<button type="button" onclick="{0}">戻る</button> </div>'.format(
+        onclick_elem
+    )
+    return img_tag + btn_tag
 
 
 if __name__ == "__main__":
