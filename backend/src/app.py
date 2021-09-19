@@ -34,8 +34,11 @@ def image_preview():
 @app.route("/result")
 def result():
     # デコードした画像を読み込んでnumpyに変換
-    img_pil = Image.open(BytesIO(IMAGE))
-    image_np = np.array(img_pil)
+    print(request.form["image"])
+    img_base64 = request.form["image"]  # 画像（base64）
+    image_binary = base64.b64decode(img_base64.split(",")[1])  # 画像（バイナリデータ）
+    img_pil = Image.open(BytesIO(image_binary))  # 画像（pillow）
+    image_np = np.array(img_pil)  # 画像（numpy）
     print(image_np)
     # これ以降に画像の処理を書いていく...
 

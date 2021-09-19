@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>プレビュー</title>
 </head>
 
 <body>
     <h1>プレビュー画面</h1>
-    <div>
+    <form action="/result" method="POST">
         <img src="{{shotImage}}" height="100%" width="100%" />
-    </div>
+        <button type="submit">OK</button>
+        <button onclick="location.href='/'">戻る</button>
+        <input type="text" name="image" value="{{shotImage}}" />
+    </form>
 
-    <button onclick="location.href='/'">戻る</button>
-    <button onclick="location.href='/result'">OK</button>
 </body>
 
 </html>
