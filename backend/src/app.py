@@ -37,9 +37,7 @@ def result():
     # これ以降に画像の処理を書いていく...
 
     onclick_elem = "location.href='/'"
-    return '<img src="{}" width="{}"/> <div> <button type="button" onclick="{}">戻る</button> </div>'.format(
-        img_base64, "50%", onclick_elem, onclick_elem
-    )
+    return '<img src="{}" width="{}"/> <div> <button type="button" onclick="{}">戻る</button> </div>'.format( img_base64, "50%", onclick_elem, onclick_elem)
 
 
 if __name__ == "__main__":
