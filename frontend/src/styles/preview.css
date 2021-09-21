@@ -23,7 +23,7 @@ img {
   padding: 2rem 4rem;
   font-size: 3rem;
   border-radius: 1rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.25);
 }
 
 #retake_button {
