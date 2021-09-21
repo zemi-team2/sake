@@ -6,8 +6,6 @@
     </h1>
     <script>
         const label = {{ label| tojson }}
-        console.log(typeof(label));
-        console.log(typeof(0));
         const sake = new Array("ウイスキー", "ビール", "ジン", "ウォッカ", "ワイン");
         /*（1）Pタグの要素ノードオブジェクト*/
         var analyseSake= document.getElementById('sake');
@@ -15,6 +13,7 @@
         var textNode = document.createTextNode(sake[label]);
         /*（3）作成したテキストノードをPタグ要素の子要素として追加する*/
         analyseSake.appendChild(textNode);
+        console.log(sake[label]);
 
     </script>
 </body>
