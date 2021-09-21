@@ -107,4 +107,5 @@ def detect_labels(path):
     else:
         return -1
 
+
 detect_text(path)
