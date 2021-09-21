@@ -35,10 +35,8 @@ def result():
 
     label = OCR.detect_text(image_binary)
     print(label)
-    if label != -1:
-        return render_template("result.html", label=label)
-    else:
-        return redirect(url_for("index"))
+
+    return render_template("result.html", label=label)
 
 
 if __name__ == "__main__":
