@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <title>プレビュー</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/preview.css')}}">
 </head>
 
 <body>
-    <h1>プレビュー画面</h1>
     <img src="{{shotImage}}" height="100%" width="100%" />
-    <form action="/result" method="POST">
-        <button type="submit">OK</button>
-        <button onclick="location.href='/'">戻る</button>
+    <form class="button_container" action="/result" method="POST">
+        <button id="retake_button" class="button" onclick="location.href='/'">撮り直し</button>
+        <button id="submit_button" class="button" type="submit">完了</button>
         <input type="text" name="image" value="{{shotImage}}" hidden/>
     </form>
 
