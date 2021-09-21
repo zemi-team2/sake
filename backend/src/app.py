@@ -1,8 +1,5 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for, redirect
 import base64
-from PIL import Image
-from io import BytesIO
-import numpy as np
 
 import OCR
 
@@ -34,14 +31,14 @@ def result():
     print(request.form["image"])
     img_base64 = request.form["image"]  # 画像（base64）
     image_binary = base64.b64decode(img_base64.split(",")[1])  # 画像（バイナリデータ）
-    # img_pil = Image.open(BytesIO(image_binary))  # 画像（pillow）
-    # image_np = np.array(img_pil)  # 画像（numpy）
-    # print(image_np)
     # これ以降に画像の処理を書いていく...
 
     label = OCR.detect_text(image_binary)
     print(label)
-    return render_template("result.html", label=label)
+    if label != -1:
+        return render_template("result.html", label=label)
+    else:
+        return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

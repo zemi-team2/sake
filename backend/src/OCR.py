@@ -34,7 +34,8 @@ def detect_text(content):
     if response.error.message:
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(
+                response.error.message)
         )
 
     # 全部小文字に変換し、結果を返す type:str
@@ -93,7 +94,8 @@ def detect_labels(content):
 
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(
+                response.error.message)
         )
 
     if text.find("Wine") != -1:
@@ -103,4 +105,7 @@ def detect_labels(content):
 
 
 if __name__ == "__main__":
-    detect_text(path)
+    path = "frontend/src/Images/japanese-whiskey.jpg"
+    with io.open(path, "rb") as image_file:
+        content = image_file.read()
+    detect_text(content)
