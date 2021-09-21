@@ -2,7 +2,7 @@ from google.cloud import vision
 import os
 import io
 # 認証情報ファイルの操作-必須!
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '共通ゼミ/steel-beanbag-325001-9c2e34ccd8b7.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '共通ゼミ/xxx.json'
 # 検出したいファイルパス
 path = "実践ゼミ/019058b_210901.jpg"
 
@@ -48,6 +48,7 @@ def detect_text(path):
     if label == -1:
         label = detect_labels(path)
     print(label)
+
     return label
 
 
@@ -105,6 +106,5 @@ def detect_labels(path):
         return 4
     else:
         return -1
-
 
 detect_text(path)
