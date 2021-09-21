@@ -1,23 +1,17 @@
 from google.cloud import vision
 import os
 import io
-# 認証情報ファイルの操作-必須!
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '共通ゼミ/xxx.json'
-# 検出したいファイルパス
-path = "実践ゼミ/019058b_210901.jpg"
-
-# 分類リスト 識別が出来てない:-1 ウィスキー:0 ビール:1 ジン:2 ウォッカ:3 ワイン:4
-whiskey_k = ["ウィスキー", "whiskey"]
-beer_k = ["ビール", "beer", "発泡酒", "発泡性", "発泡"]
-gin_k = ["gin", "ジン"]
-vodka_k = ["vodka", "ウォッカ"]
 
 
 def detect_text(path):
+    os.environ[
+        "GOOGLE_APPLICATION_CREDENTIALS"
+    ] = "backend/src/steel-beanbag-325001-9c2e34ccd8b7.json"
+
     """Detects text in the file."""
     client = vision.ImageAnnotatorClient()
 
-    with io.open(path, 'rb') as image_file:
+    with io.open(path, "rb") as image_file:
         content = image_file.read()
 
     image = vision.Image(content=content)
@@ -26,7 +20,7 @@ def detect_text(path):
     texts = response.text_annotations
 
     # 結果を保存するtestを用意する
-    OCR_result = ''
+    OCR_result = ""
 
     for text in texts:
         print('\n"{}"'.format(text.description))
@@ -39,9 +33,9 @@ def detect_text(path):
 
     if response.error.message:
         raise Exception(
-            '{}\nFor more info on error messages, check: '
-            'https://cloud.google.com/apis/design/errors'.format(
-                response.error.message))
+            "{}\nFor more info on error messages, check: "
+            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+        )
 
     # 全部小文字に変換し、結果を返す type:str
     label = find_keyword(OCR_result.lower())
@@ -53,24 +47,27 @@ def detect_text(path):
 
 
 def find_keyword(OCR_result):
+
+    # 分類リスト 識別が出来てない:-1 ウィスキー:0 ビール:1 ジン:2 ウォッカ:3 ワイン:4
+    whiskey_k = ["ウィスキー", "whiskey", "whisky"]
+    beer_k = ["ビール", "beer", "発泡酒", "発泡性", "発泡"]
+    gin_k = ["gin", "ジン"]
+    vodka_k = ["vodka", "ウォッカ"]
+
     for k in whiskey_k:
         if OCR_result.find(k) != -1:
-            print(f'[{k}]が見つかりました: {OCR_result.find(k)}')
             return 0
 
     for k in beer_k:
         if OCR_result.find(k) != -1:
-            print(f'[{k}]が見つかりました: {OCR_result.find(k)}')
             return 1
 
     for k in gin_k:
         if OCR_result.find(k) != -1:
-            print(f'[{k}]が見つかりました: {OCR_result.find(k)}')
             return 2
 
     for k in vodka_k:
         if OCR_result.find(k) != -1:
-            print(f'[{k}]が見つかりました: {OCR_result.find(k)}')
             return 3
 
     return -1
@@ -81,16 +78,16 @@ def detect_labels(path):
     """Detects labels in the file."""
     client = vision.ImageAnnotatorClient()
 
-    with io.open(path, 'rb') as image_file:
+    with io.open(path, "rb") as image_file:
         content = image_file.read()
 
     image = vision.Image(content=content)
 
     response = client.label_detection(image=image)
     labels = response.label_annotations
-    print('Labels:')
+    print("Labels:")
 
-    text = ''
+    text = ""
     for label in labels:
         print(label.description)
         text += label.description
@@ -98,9 +95,9 @@ def detect_labels(path):
     if response.error.message:
 
         raise Exception(
-            '{}\nFor more info on error messages, check: '
-            'https://cloud.google.com/apis/design/errors'.format(
-                response.error.message))
+            "{}\nFor more info on error messages, check: "
+            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+        )
 
     if text.find("Wine") != -1:
         return 4
