@@ -4,6 +4,8 @@ from PIL import Image
 from io import BytesIO
 import numpy as np
 
+import OCR
+
 # Flaskの設定
 template_dir = "/sake/frontend/src/html"
 static_dir = "/sake/frontend/src"
@@ -32,16 +34,14 @@ def result():
     print(request.form["image"])
     img_base64 = request.form["image"]  # 画像（base64）
     image_binary = base64.b64decode(img_base64.split(",")[1])  # 画像（バイナリデータ）
-    img_pil = Image.open(BytesIO(image_binary))  # 画像（pillow）
-    image_np = np.array(img_pil)  # 画像（numpy）
-    print(image_np)
+    # img_pil = Image.open(BytesIO(image_binary))  # 画像（pillow）
+    # image_np = np.array(img_pil)  # 画像（numpy）
+    # print(image_np)
     # これ以降に画像の処理を書いていく...
 
-    onclick_elem = "location.href='/'"
-    img_tag = '<img src="{0}" width="{1}"/>'.format(img_base64, "50%")
-    btn_tag = '<button type="button" onclick="{0}">戻る</button>'.format(
-        onclick_elem)
-    return img_tag + btn_tag
+    label = OCR.detect_text(image_binary)
+    print(label)
+    return render_template("result.html", label=label)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ import os
 import io
 
 
-def detect_text(path):
+def detect_text(content):
     os.environ[
         "GOOGLE_APPLICATION_CREDENTIALS"
     ] = "backend/src/steel-beanbag-325001-9c2e34ccd8b7.json"
@@ -11,8 +11,8 @@ def detect_text(path):
     """Detects text in the file."""
     client = vision.ImageAnnotatorClient()
 
-    with io.open(path, "rb") as image_file:
-        content = image_file.read()
+    # with io.open(path, "rb") as image_file:
+    #     content = image_file.read()
 
     image = vision.Image(content=content)
 
@@ -40,7 +40,7 @@ def detect_text(path):
     # 全部小文字に変換し、結果を返す type:str
     label = find_keyword(OCR_result.lower())
     if label == -1:
-        label = detect_labels(path)
+        label = detect_labels(content)
     print(label)
 
     return label
@@ -74,12 +74,9 @@ def find_keyword(OCR_result):
 
 
 # ワインのラベルの識別
-def detect_labels(path):
+def detect_labels(content):
     """Detects labels in the file."""
     client = vision.ImageAnnotatorClient()
-
-    with io.open(path, "rb") as image_file:
-        content = image_file.read()
 
     image = vision.Image(content=content)
 
@@ -105,4 +102,5 @@ def detect_labels(path):
         return -1
 
 
-detect_text(path)
+if __name__ == "__main__":
+    detect_text(path)
