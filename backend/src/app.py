@@ -32,7 +32,7 @@ def result():
     image_binary = base64.b64decode(img_base64.split(",")[1])  # 画像（バイナリデータ）
     # これ以降に画像の処理を書いていく...
 
-    label = OCR.detect_text(image_binary)
+    label = OCR.detect_sake(image_binary)
 
     return render_template("result.html", label=label)
 
