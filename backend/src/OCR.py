@@ -6,6 +6,30 @@ import io
 # visonAIで酒の種類を推定する関数
 def detect_sake(content):
 
+    """
+    バイナリ形式の画像を入力して酒を検出してラベルを出力
+
+    Parameters
+    ----------
+    content : <class 'bytes'>
+        画像のバイナリデータ
+
+    Returns
+    -------
+    label : int
+        酒のラベル（-1 ～ 4）
+
+    Notes
+    -----
+    分類リスト:
+        識別が出来てない:-1
+        ウィスキー:0
+        ビール:1
+        ジン:2
+        ウォッカ:3
+        ワイン:4
+    """
+
     os.environ[
         "GOOGLE_APPLICATION_CREDENTIALS"
     ] = "backend/src/steel-beanbag-325001-9c2e34ccd8b7.json"
@@ -25,9 +49,32 @@ def detect_sake(content):
 # OCRで推定する関数（ワイン以外に対応）
 def detect_text(image):
 
-    """Detects text"""
+    """
+    OCRで酒のラベルを検出して出力
+
+    Parameters
+    ----------
+    image :  <class 'google.cloud.vision_v1.types.image_annotator.Image'>
+        visonAIのサーバに送信する画像フォーマット
+
+    Returns
+    -------
+    label : int
+        酒のラベル（-1 ～ 4）
+
+    Notes
+    -----
+    分類リスト:
+        識別が出来てない:-1
+        ウィスキー:0
+        ビール:1
+        ジン:2
+        ウォッカ:3
+        ワイン:4
+    """
 
     client = vision.ImageAnnotatorClient()
+    print("type: {0}".format(type(image)))
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
@@ -54,6 +101,30 @@ def detect_text(image):
 # OCRで取得したテキストからキーワードを検出してラベルを決定する関数
 def find_keyword(OCR_result):
 
+    """
+    OCRで取得したテキストからキーワードを検出してラベルを決定する関数
+
+    Parameters
+    ----------
+    OCR_result : list(str)
+        OCRで検出した文字列のリスト
+
+    Returns
+    -------
+    label : int
+        酒のラベル（-1 ～ 4）
+
+    Notes
+    -----
+    分類リスト:
+        識別が出来てない:-1
+        ウィスキー:0
+        ビール:1
+        ジン:2
+        ウォッカ:3
+        ワイン:4
+    """
+
     # 分類リスト 識別が出来てない:-1 ウィスキー:0 ビール:1 ジン:2 ウォッカ:3 ワイン:4
     # 各ラベルのキーワードリスト
     whiskey_k = ["ウィスキー", "whiskey", "whisky"]
@@ -73,7 +144,30 @@ def find_keyword(OCR_result):
 
 # visonAIの画像を検出を使ってラベルを検出する関数(ワイン、ビールに対応)
 def detect_labels(image):
-    """Detects labels"""
+    """
+    visonAIの「画像ラベル検出」を使ってラベルを検出する関数(ワイン、ビールに対応)
+
+    Parameters
+    ----------
+    image :  <class 'google.cloud.vision_v1.types.image_annotator.Image'>
+        visonAIのサーバに送信する画像フォーマット
+
+    Returns
+    -------
+    label : int
+        酒のラベル（-1 ～ 4）
+
+    Notes
+    -----
+    分類リスト:
+        識別が出来てない:-1
+        ウィスキー:0
+        ビール:1
+        ジン:2
+        ウォッカ:3
+        ワイン:4
+    """
+
     print("execute  detect image label ...")
     client = vision.ImageAnnotatorClient()
 
