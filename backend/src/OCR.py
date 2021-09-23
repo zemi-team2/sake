@@ -35,7 +35,8 @@ def detect_text(content):
         raise Exception(
             "{0}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(
-                response.error.message)
+                response.error.message,
+            )
         )
 
     # 全部小文字に変換し、結果を返す type:str
@@ -62,22 +63,6 @@ def find_keyword(OCR_result):
             if OCR_result.find(keyword) != -1:
                 return id
 
-    # for k in whiskey_k:
-    #     if OCR_result.find(k) != -1:
-    #         return 0
-
-    # for k in beer_k:
-    #     if OCR_result.find(k) != -1:
-    #         return 1
-
-    # for k in gin_k:
-    #     if OCR_result.find(k) != -1:
-    #         return 2
-
-    # for k in vodka_k:
-    #     if OCR_result.find(k) != -1:
-    #         return 3
-
     return -1
 
 
@@ -102,7 +87,8 @@ def detect_labels(content):
         raise Exception(
             "{0}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(
-                response.error.message)
+                response.error.message,
+            )
         )
 
     if text.find("Wine") != -1:
