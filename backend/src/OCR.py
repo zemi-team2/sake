@@ -1,5 +1,3 @@
-from posixpath import dirname
-import re
 from google.cloud import vision
 import os
 import io
@@ -36,7 +34,8 @@ def detect_text(content):
     if response.error.message:
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(
+                response.error.message)
         )
 
     # 全部小文字に変換し、結果を返す type:str
@@ -102,7 +101,8 @@ def detect_labels(content):
 
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(
+                response.error.message)
         )
 
     if text.find("Wine") != -1:
