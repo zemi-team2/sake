@@ -33,7 +33,7 @@ def detect_text(content):
 
     if response.error.message:
         raise Exception(
-            "{}\nFor more info on error messages, check: "
+            "{0}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(
                 response.error.message)
         )
@@ -100,7 +100,7 @@ def detect_labels(content):
     if response.error.message:
 
         raise Exception(
-            "{}\nFor more info on error messages, check: "
+            "{0}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(
                 response.error.message)
         )
@@ -116,19 +116,25 @@ def detect_labels(content):
 if __name__ == "__main__":
     path = "backend/src/images/japanese-whiskey.jpg"
     file_list = []
-    labels = []
+    predict_labels = []
+    labels = ["whiskey", "beer", "gin", "vodka"]
 
     dir_path = "backend/src/images"
     for dir in os.listdir(dir_path):
-        file_list.append(os.path.join(dir))
+        file_list.append(os.path.join(dir_path, dir))
+    print(file_list)
 
     print("###########################################")
     for file in file_list:
         print("image: {0}".format(file))
-        with io.open(path, "rb") as image_file:
+        with io.open(file, "rb") as image_file:
             content = image_file.read()
-        labels.append(detect_text(content))
+        predict_labels.append(detect_text(content))
         print("###########################################")
 
-    for file, label in zip(file_list, labels):
-        print("image: {0} label: {1}".format(file, label))
+    for file, predict_label in zip(file_list, predict_labels):
+        print(
+            "image: {0} label: {1} {2}".format(
+                file, predict_label, labels[predict_label]
+            )
+        )
