@@ -42,7 +42,7 @@ def detect_text(content):
     label = find_keyword(OCR_result.lower())
     if label == -1:
         label = detect_labels(content)
-    print(label)
+    print("label: {0}".format(label))
 
     return label
 

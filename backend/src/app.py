@@ -34,7 +34,6 @@ def result():
     # これ以降に画像の処理を書いていく...
 
     label = OCR.detect_text(image_binary)
-    print(label)
 
     return render_template("result.html", label=label)
 
