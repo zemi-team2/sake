@@ -1,3 +1,5 @@
+from posixpath import dirname
+import re
 from google.cloud import vision
 import os
 import io
@@ -34,8 +36,7 @@ def detect_text(content):
     if response.error.message:
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(
-                response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(response.error.message)
         )
 
     # 全部小文字に変換し、結果を返す type:str
@@ -51,25 +52,32 @@ def find_keyword(OCR_result):
 
     # 分類リスト 識別が出来てない:-1 ウィスキー:0 ビール:1 ジン:2 ウォッカ:3 ワイン:4
     whiskey_k = ["ウィスキー", "whiskey", "whisky"]
-    beer_k = ["ビール", "beer", "発泡酒", "発泡性", "発泡"]
+    beer_k = ["ビール", "beer", "発泡酒", "発泡性", "発泡", "生ビー"]
     gin_k = ["gin", "ジン"]
     vodka_k = ["vodka", "ウォッカ"]
 
-    for k in whiskey_k:
-        if OCR_result.find(k) != -1:
-            return 0
+    sake_keywords = [whiskey_k, beer_k, gin_k, vodka_k]
 
-    for k in beer_k:
-        if OCR_result.find(k) != -1:
-            return 1
+    for id, keyword_list in enumerate(sake_keywords):
+        for keyword in keyword_list:
+            if OCR_result.find(keyword) != -1:
+                return id
 
-    for k in gin_k:
-        if OCR_result.find(k) != -1:
-            return 2
+    # for k in whiskey_k:
+    #     if OCR_result.find(k) != -1:
+    #         return 0
 
-    for k in vodka_k:
-        if OCR_result.find(k) != -1:
-            return 3
+    # for k in beer_k:
+    #     if OCR_result.find(k) != -1:
+    #         return 1
+
+    # for k in gin_k:
+    #     if OCR_result.find(k) != -1:
+    #         return 2
+
+    # for k in vodka_k:
+    #     if OCR_result.find(k) != -1:
+    #         return 3
 
     return -1
 
@@ -94,18 +102,33 @@ def detect_labels(content):
 
         raise Exception(
             "{}\nFor more info on error messages, check: "
-            "https://cloud.google.com/apis/design/errors".format(
-                response.error.message)
+            "https://cloud.google.com/apis/design/errors".format(response.error.message)
         )
 
     if text.find("Wine") != -1:
         return 4
+    elif text.find("Beer") != -1:
+        return 1
     else:
         return -1
 
 
 if __name__ == "__main__":
-    path = "frontend/src/Images/japanese-whiskey.jpg"
-    with io.open(path, "rb") as image_file:
-        content = image_file.read()
-    detect_text(content)
+    path = "backend/src/images/japanese-whiskey.jpg"
+    file_list = []
+    labels = []
+
+    dir_path = "backend/src/images"
+    for dir in os.listdir(dir_path):
+        file_list.append(os.path.join(dir))
+
+    print("###########################################")
+    for file in file_list:
+        print("image: {0}".format(file))
+        with io.open(path, "rb") as image_file:
+            content = image_file.read()
+        labels.append(detect_text(content))
+        print("###########################################")
+
+    for file, label in zip(file_list, labels):
+        print("image: {0} label: {1}".format(file, label))
