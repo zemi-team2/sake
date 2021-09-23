@@ -28,7 +28,6 @@ def image_preview():
 @app.route("/result", methods=["POST"])
 def result():
     # デコードした画像を読み込んでnumpyに変換
-    print(request.form["image"])
     img_base64 = request.form["image"]  # 画像（base64）
     image_binary = base64.b64decode(img_base64.split(",")[1])  # 画像（バイナリデータ）
     # これ以降に画像の処理を書いていく...
