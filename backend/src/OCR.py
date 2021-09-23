@@ -66,9 +66,10 @@ def find_keyword(OCR_result):
     return -1
 
 
-# ワインのラベルの識別
+# ラベルの識別(ワイン、ビール)
 def detect_labels(content):
     """Detects labels in the file."""
+    print("execute image label ...")
     client = vision.ImageAnnotatorClient()
 
     image = vision.Image(content=content)
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     path = "backend/src/images/japanese-whiskey.jpg"
     file_list = []
     predict_labels = []
-    labels = ["whiskey", "beer", "gin", "vodka"]
+    labels = ["whiskey", "beer", "gin", "vodka", "wine"]
 
     dir_path = "backend/src/images"
     for dir in os.listdir(dir_path):
@@ -119,8 +120,16 @@ if __name__ == "__main__":
         print("###########################################")
 
     for file, predict_label in zip(file_list, predict_labels):
-        print(
-            "image: {0} label: {1} {2}".format(
-                file, predict_label, labels[predict_label]
+        if predict_label != -1:
+            print(
+                "image: {0} label: {1} ({2})".format(
+                    file, predict_label, labels[predict_label]
+                )
             )
-        )
+        else:
+            print(
+                "image: {0} label: {1} (none)".format(
+                    file,
+                    predict_label,
+                )
+            )
