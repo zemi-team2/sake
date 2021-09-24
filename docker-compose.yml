@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    container_name: 'sake-frontend'
+    working_dir: '/frontend'
+    tty: true
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
