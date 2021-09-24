@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1 id="sake">
+    </h1>
+    <script>
+        const label = {{ label| tojson }};
+        if (label === -1) {
+            alert("識別できませんでした。");
+            location.href = '/';
+        }
+        else {
+            const sake = new Array("ウイスキー", "ビール", "ジン", "ウォッカ", "ワイン");
+            var analyseSake = document.getElementById('sake');
+            var textNode = document.createTextNode(sake[label]);
+            analyseSake.appendChild(textNode);
+            console.log(sake[label]);
+        }
+
+    </script>
+</body>
+
+</html>

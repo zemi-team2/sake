@@ -1,0 +1,38 @@
+body {
+  position: relative;
+}
+
+img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.button_container {
+  position: absolute;
+  bottom: 10rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50rem;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  padding: 2rem 4rem;
+  font-size: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.25);
+}
+
+#retake_button {
+  background-color: #fff;
+  margin-right: 3rem;
+  color: #ffb7a0;
+}
+
+#submit_button {
+  background-color: #ffb7a0;
+  color: #fff;
+}
