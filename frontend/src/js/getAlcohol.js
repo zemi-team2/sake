@@ -66,8 +66,8 @@ const alcohols = [
     ],
     snack: {
       name: "アスパラのチーズ生ハム巻き",
-      ingredients: "アスパラ:生ハム:チーズ:塩",
-      quantity: "1本:1枚:1適量:適量",
+      ingredients: ["アスパラ", "生ハム", "チーズ", "塩"],
+      quantity: ["1本", "1枚", "1適量", "適量"],
     },
     storageLocation: "冷蔵庫",
   },
