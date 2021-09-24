@@ -193,6 +193,12 @@ const alcohols = [
  * @return {Object} alcoholInfo お酒の情報が入ったオブジェクト
  */
 function getAlcohol(label) {
+  if (label === -1) {
+    // 識別できなければトップ画面へ戻る
+    alert('識別できませんでした');
+    location.href = '/';
+  }
+
   const alcoholInfo = {
     name: alcohols[label].name,
     drinks: alcohols[label].drinks,
