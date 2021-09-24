@@ -25,15 +25,16 @@ make run-flask-app
 ````
 [http://localhost:8000](http://localhost:8000)でアクセス可能
 
-#### 5. コードチェック（flake8）
-```shell
-make lint-backend
-```
 
-#### 6. コードのフォーマット（black）
-````shell
+#### 5. コードスタイルのチェック
+
+```shell
+# コードが PEP8 に従っているかチェック
+make lint-backend
+
+# コードを自動的に修正
 make format-backend
-````
+```
 
 ## make コマンドを使わない場合
 
@@ -59,12 +60,11 @@ docker-compose exec backend python backend/src/app.py
 ````
 [http://localhost:8000](http://localhost:8000)でアクセス可能
 
-#### 5. コードチェック（flake8）
+#### 5. コードスタイルのチェック
 ```shell
+# コードが PEP8 に従っているかチェック
 docker-compose exec backend flake8 backend/src
-```
 
-#### 6. コードのフォーマット（black）
-````shell
+# コードを自動的に修正
 docker-compose exec backend black backend/src/
 ````
