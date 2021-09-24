@@ -3,7 +3,7 @@ import os
 import io
 
 
-# visonAIで酒の種類を推定する関数
+# visionAIで酒の種類を推定する関数
 def detect_sake(content):
 
     """
@@ -55,7 +55,7 @@ def detect_text(image):
     Parameters
     ----------
     image :  <class 'google.cloud.vision_v1.types.image_annotator.Image'>
-        visonAIのサーバに送信する画像フォーマット
+        visionAIのサーバに送信する画像フォーマット
 
     Returns
     -------
@@ -142,15 +142,15 @@ def find_keyword(OCR_result):
     return -1
 
 
-# visonAIの画像を検出を使ってラベルを検出する関数(ワイン、ビールに対応)
+# visionAIの画像を検出を使ってラベルを検出する関数(ワイン、ビールに対応)
 def detect_labels(image):
     """
-    visonAIの「画像ラベル検出」を使ってラベルを検出する関数(ワイン、ビールに対応)
+    visionAIの「画像ラベル検出」を使ってラベルを検出する関数(ワイン、ビールに対応)
 
     Parameters
     ----------
     image :  <class 'google.cloud.vision_v1.types.image_annotator.Image'>
-        visonAIのサーバに送信する画像フォーマット
+        visionAIのサーバに送信する画像フォーマット
 
     Returns
     -------
