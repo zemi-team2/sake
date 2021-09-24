@@ -8,3 +8,16 @@ services:
     volumes:
       - ./frontend:/frontend
       - /frontend/node_modules
+    
+  backend:
+    restart: always
+    build: ./backend
+    container_name: 'sake-backend'
+    working_dir: '/sake'
+    tty: true
+    volumes:
+      - .:/sake
+    ports:
+      - '8000:8000'
+
+
