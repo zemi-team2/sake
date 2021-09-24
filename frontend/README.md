@@ -4,48 +4,36 @@
 
 ### make コマンドを使う場合
 
-#### 1. 開発環境の初期化
+#### 1. 開発環境の立ち上げ
 
 ```shell
-make init
+make up-frontend
 ```
 
-#### 2. 開発環境の立ち上げ
-
-```shell
-make up
-```
-
-#### 3. コードスタイルのチェック
+#### 2. コードスタイルのチェック
 
 ```shell
 # コードが Airbnb JavaScript Style Guide に従っているかチェック
-npm run lint
+make lint-frontend
 
 # コードを自動的に修正
-npm run format
+make format-frontend
 ```
 
 ### make コマンドを使わない場合
 
-#### 1. 開発環境の初期化
+#### 1. 開発環境の立ち上げ
 
 ```shell
-docker compose build
+docker-compose up -d --no-deps --build frontend
 ```
 
-#### 2. 開発環境の立ち上げ
-
-```shell
-docker compose up
-```
-
-#### 3. コードスタイルのチェック
+#### 2. コードスタイルのチェック
 
 ```shell
 # コードが Airbnb JavaScript Style Guide に従っているかチェック
-npm run lint
+docker-compose exec frontend npm run lint
 
 # コードを自動的に修正
-npm run format
+docker-compose exec frontend npm run format
 ```
