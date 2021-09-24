@@ -195,8 +195,8 @@ const alcohols = [
 function getAlcohol(label) {
   if (label === -1) {
     // 識別できなければトップ画面へ戻る
-    alert('識別できませんでした');
-    location.href = '/';
+    alert("識別できませんでした");
+    window.location.href = "/";
   }
 
   const alcoholInfo = {
