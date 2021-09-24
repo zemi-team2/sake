@@ -36,6 +36,11 @@ make lint-backend
 make format-backend
 ```
 
+#### 6. お酒の種類を検出するプログラムの起動
+````shell
+make run-visionAI
+````
+
 ## make コマンドを使わない場合
 
 ### 1. リポジトリのクローンとディレクトリの移動
@@ -61,10 +66,15 @@ docker-compose exec backend python backend/src/app.py
 [http://localhost:8000](http://localhost:8000)でアクセス可能
 
 #### 5. コードスタイルのチェック
-```shell
+````shell
 # コードが PEP8 に従っているかチェック
 docker-compose exec backend flake8 backend/src
 
 # コードを自動的に修正
 docker-compose exec backend black backend/src/
+````  
+
+#### 6. お酒の種類を検出するプログラムの起動
+````shell
+docker-compose exec backend python backend/src/OCR.py
 ````
