@@ -25,6 +25,16 @@ make run-flask-app
 ````
 [http://localhost:8000](http://localhost:8000)でアクセス可能
 
+#### 5. コードチェック（flake8）
+```shell
+make lint-backend
+```
+
+#### 6. コードのフォーマット（black）
+````shell
+make format-backend
+````
+
 ## make コマンドを使わない場合
 
 ### 1. リポジトリのクローンとディレクトリの移動
@@ -48,3 +58,13 @@ python backend/src/sample.py
 docker-compose exec backend python backend/src/app.py
 ````
 [http://localhost:8000](http://localhost:8000)でアクセス可能
+
+#### 5. コードチェック（flake8）
+```shell
+docker-compose exec backend flake8 backend/src
+```
+
+#### 6. コードのフォーマット（black）
+````shell
+docker-compose exec backend black backend/src/
+````
