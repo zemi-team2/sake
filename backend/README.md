@@ -7,45 +7,44 @@
 ### 1. リポジトリのクローンとディレクトリの移動
 ```shell
 git clone git@github.com:zemi-team2/sake.git
-cd backend
+```
+#### 2. 開発環境の起動
+```shell
+make up-backend
 ```
 
-#### 2. 開発環境の初期化
+#### 3. Python コードの実行
 ```shell
-make init
+make sh-backend
+python backend/src/sample.py
 ```
 
-#### 3. 開発環境の起動
-```shell
-make up
-```
-
-#### 4. Python コードの実行
-```shell
-make sh
-python sample.py
-```
+#### 4. 開発サーバーの起動
+````shell
+make run-flask-app
+````
+[http://localhost:8000](http://localhost:8000)でアクセス可能
 
 ## make コマンドを使わない場合
 
 ### 1. リポジトリのクローンとディレクトリの移動
 ```shell
 git clone git@github.com:zemi-team2/sake.git
-cd backend
 ```
 
-#### 2. 開発環境の初期化
+#### 2. 開発環境の起動
 ```shell
-docker compose build
+docker-compose up -d --no-deps --build backend
 ```
 
-#### 3. 開発環境の起動
+#### 3. Python コードの実行
 ```shell
-docker compose up
+docker compose exec backend bash
+python backend/src/sample.py
 ```
 
-#### 4. Python コードの実行
-```shell
-docker compose exec python3 bash
-python sample.py
-```
+#### 4. 開発サーバーの起動
+````shell
+docker-compose exec backend python backend/src/app.py
+````
+[http://localhost:8000](http://localhost:8000)でアクセス可能
