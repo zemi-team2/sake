@@ -35,7 +35,7 @@ lint-frontend:
 	docker-compose exec frontend npm run lint
 
 lint-backend:
-	docker-compose exec backend npm run flake8 backend/src
+	docker-compose exec backend flake8 backend/src
 
 # formaterの実行
 format-frontend:
