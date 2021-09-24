@@ -11,6 +11,8 @@ makeが実行出来ない場合
 - `docker-compose up -d --build`
 ### ターミナルにアクセス
 - `make sh-{backend | frontend}`
+makeが実行出来ない場合
+- `docker-compose exec {backend | frontend} bash`
 ### 開発サーバーの起動  
 - `make run-flask-app`  
 他にも`Makefile`に頻繁に使用するコマンドをまとめたので必要があれば参考にしてください
