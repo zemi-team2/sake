@@ -134,10 +134,10 @@ def find_keyword(OCR_result):
 
     sake_keywords = [whiskey_k, beer_k, gin_k, vodka_k]
 
-    for id, keyword_list in enumerate(sake_keywords):
+    for sake_id, keyword_list in enumerate(sake_keywords):
         for keyword in keyword_list:
             if OCR_result.find(keyword) != -1:
-                return id
+                return sake_id
 
     return -1
 
