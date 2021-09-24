@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8" />
+    <title>トップページ</title>
+    <style>
+        #drinks > div {
+            border: 1px solid black;
+            margin-bottom: 1rem;
+        }
 
+        #snack_ingredients > div {
+            border: 1px solid black;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
 <body>
-    <h1 id="sake">
-    </h1>
-    <script>
-        const label = {{ label| tojson }};
-        if (label === -1) {
-            alert("識別できませんでした。");
-            location.href = '/';
-        }
-        else {
-            const sake = new Array("ウイスキー", "ビール", "ジン", "ウォッカ", "ワイン");
-            var analyseSake = document.getElementById('sake');
-            var textNode = document.createTextNode(sake[label]);
-            analyseSake.appendChild(textNode);
-            console.log(sake[label]);
-        }
+    <div>
+        <h1>&#x1f37a;分析結果&#x1f37a;</h1>
+        <div>
+            <p>あなたが撮影したお酒は</p>
+            <p id="alcohol_name"></p>
+            <p>と判定されました</p>
+        </div>
+    </div>
+    <div>
+        <h2>おすすめの割り物</h2>
+        <div id="drinks"></div>
+    </div>
+    <div>
+        <h2>おすすめのおつまみ</h2>
+        <div id="snack">
+            <h4 id="snack_name"></h4>
+            <div id="snack_ingredients"></div>
+        </div>
+    </div>
+    <div>
+        <h2>保存方法</h2>
+        <p id="storage_location"></p>
+    </div>
 
+    <script type="text/javascript" src="{{url_for('static', filename='js/getAlcohol.js')}}"></script>
+    <script>
+        const label = {{ label }};
+        getAlcohol(label);
     </script>
 </body>
 
