@@ -27,7 +27,7 @@ sh-backend:
 
 
 # 起動中のコンテナの確認
-view-run-container:
+ps:
 	docker ps
 
 # linterの実行
