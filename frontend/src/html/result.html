@@ -3,40 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <title>トップページ</title>
-    <style>
-        #drinks > div {
-            border: 1px solid black;
-            margin-bottom: 1rem;
-        }
-
-        #snack_ingredients > div {
-            border: 1px solid black;
-            margin-bottom: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/result.css')}}">
 </head>
 <body>
-    <div>
-        <h1>&#x1f37a;分析結果&#x1f37a;</h1>
-        <div>
+    <div id="heading_section">
+        <h1 id="heading_section_title">&#x1f37a; 分析結果 &#x1f37a;</h1>
+        <div id="heading_section_description">
             <p>あなたが撮影したお酒は</p>
             <p id="alcohol_name"></p>
             <p>と判定されました</p>
         </div>
     </div>
-    <div>
-        <h2>おすすめの割り物</h2>
+    <div class="section">
+        <h2 class="section_title">おすすめの割り物</h2>
         <div id="drinks"></div>
     </div>
-    <div>
-        <h2>おすすめのおつまみ</h2>
+    <div class="section">
+        <h2 class="section_title">おすすめのおつまみ</h2>
         <div id="snack">
             <h4 id="snack_name"></h4>
             <div id="snack_ingredients"></div>
         </div>
     </div>
-    <div>
-        <h2>保存方法</h2>
+    <div class="section">
+        <h2 class="section_title">保存方法</h2>
         <p id="storage_location"></p>
     </div>
 

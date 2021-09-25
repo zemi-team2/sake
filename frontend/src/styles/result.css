@@ -1,0 +1,77 @@
+.section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.section_title {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 15rem;
+}
+
+#heading_section {
+  text-align: center;
+  margin-top: 10rem;
+}
+
+#heading_section_title {
+  font-size: 4rem;
+  font-weight: normal;
+}
+
+#heading_section_description {
+  font-size: 2rem;
+  margin-top: 5rem;
+}
+
+#alcohol_name {
+  font-weight: bold;
+  font-size: 4rem;
+  margin: 0;
+  line-height: 0.1;
+}
+
+#drinks > div {
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  margin-bottom: 2rem;
+  padding: 2rem 4rem;
+  border-radius: 1rem;
+}
+
+#drinks > div > h3 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+#drinks > div > p {
+  font-size: 1.5rem;
+  color: #a3a3a3;
+}
+
+#snack {
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  padding: 2rem 4rem;
+  border-radius: 1rem;
+}
+
+#snack_name {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+#snack_ingredients > div {
+  margin-bottom: 1rem;
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  color: #a3a3a3;
+}
+
+#storage_location {
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+}
