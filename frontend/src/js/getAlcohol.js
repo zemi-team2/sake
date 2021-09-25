@@ -76,7 +76,7 @@ const alcohols = [
     drinks: [
       {
         name: "オレンジブロッサム",
-        ingredients: "ジン:オレンジジュース]",
+        ingredients: "ジン:オレンジジュース",
         ratio: "45ml:適量",
       },
       {
@@ -103,7 +103,7 @@ const alcohols = [
     snack: {
       name: "生ハムチーズクラッカー",
       ingredients: ["生ハム", "チーズ", "クラッカー"],
-      quantity: "それぞれ適量",
+      quantity: ["適量", "適量", "適量"],
     },
     storageLocation: "冷蔵庫",
   },
