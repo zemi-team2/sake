@@ -61,13 +61,14 @@ body {
 
 #snack_name {
   font-weight: bold;
+  font-size: 2rem;
   margin-bottom: 2rem;
 }
 
 #snack_ingredients > div {
   margin-bottom: 1rem;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.5rem;
   justify-content: space-between;
   align-items: center;
   height: 2rem;
