@@ -75,3 +75,20 @@
   padding: 2rem 4rem;
   font-size: 2rem;
 }
+
+#button_container {
+  width: 80%;
+  margin: 10rem auto;
+}
+
+.button {
+  width: 100%;
+  display: inline-block;
+  background-color: #ffb7a0;
+  color: #fff;
+  border: none;
+  padding: 2rem 4rem;
+  font-size: 3rem;
+  border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
