@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 .section {
   width: 80%;
   margin: 0 auto;
@@ -74,6 +78,7 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
   padding: 2rem 4rem;
   font-size: 2rem;
+  font-weight: bold;
 }
 
 #button_container {
